@@ -14,6 +14,7 @@ This custom integration is a fork of the core integration for IntesisHome. It re
 - **None guard in get_mode_list** — prevents a TypeError crash when cloud devices do not return UID 61 (config_mode_map)
 - **KeyError guard on config entry reload** — prevents a crash when reloading the integration via the UI
 - **HA 2026.x config flow compatibility** — replaces deprecated `FlowResult` import with `ConfigFlowResult` to fix "Invalid handler specified" error when adding the integration via the UI
+- **Remove deprecated async_step_import** — removes the deprecated YAML import handler that causes "Invalid handler specified" error when adding the integration via the UI in HA 2025+
 
 ## Tested hardware
 
