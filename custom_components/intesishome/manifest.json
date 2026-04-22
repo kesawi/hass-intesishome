@@ -8,5 +8,5 @@
   "issue_tracker": "https://github.com/kesawi/hass-intesishome/issues",
   "loggers": ["pyintesishome"],
   "requirements": [],
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
