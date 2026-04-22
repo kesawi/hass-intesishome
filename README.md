@@ -16,6 +16,7 @@ This custom integration is a fork of the core integration for IntesisHome. It re
 - **HA 2026.x config flow compatibility** — replaces deprecated `FlowResult` import with `ConfigFlowResult` to fix "Invalid handler specified" error when adding the integration via the UI
 - **Remove deprecated async_step_import** — removes the deprecated YAML import handler that causes "Invalid handler specified" error when adding the integration via the UI in HA 2025+
 - **Replace deprecated async_forward_entry_unload** — replaces removed `async_forward_entry_unload` with `async_unload_platforms` for HA 2025+ compatibility
+- **Relative imports in vendored library** — fixes absolute imports within pyintesishome submodules that caused `No module named 'pyintesishome.intesisbase'` error on production
 
 ## Tested hardware
 
