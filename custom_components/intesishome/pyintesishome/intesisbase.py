@@ -309,6 +309,8 @@ class IntesisBase:
             mode_bits = OPERATING_MODE_BITS
 
         # Generate the mode list from the map
+        if mode_map is None:
+            return mode_list
         for mode_bit in mode_bits:
             if mode_map & mode_bit:
                 mode_list.append(mode_bits.get(mode_bit))
