@@ -102,7 +102,7 @@ async def async_setup_entry(
 ) -> None:
     """Create climate entities from config flow."""
     config = config_entry.data
-    if "controller" in hass.data[DOMAIN]:
+    if config_entry.unique_id in hass.data[DOMAIN].get("controller", {}):
         controller = hass.data[DOMAIN]["controller"].pop(config_entry.unique_id)
         ih_devices = controller.get_devices()
         if ih_devices:

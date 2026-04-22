@@ -293,8 +293,14 @@ class IntesisHomeLocal(IntesisBase):
         ]
 
     def _get_fan_map(self, device_id):
-        fan_values = sorted(self._datapoints[4]["descr"]["states"])
-        for values in INTESIS_MAP[67]["values"].values():
+        raw_states = self._datapoints[4]["descr"]["states"]
+        fan_values = sorted(raw_states)
+        # MH-AC-WIFI-1 supports AUTO fan (uid 4 value 0) even when not
+        # advertised in the datapoints descriptor
+        device_model = self._info.get("deviceModel", "") if self._info else ""
+        if 0 not in fan_values and "MH-AC-WIFI" in device_model:
+            fan_values = [0] + fan_values
+        for map_key, values in INTESIS_MAP[67]["values"].items():
             if sorted(values.keys()) == fan_values:
                 return values
         return INTESIS_MAP[67]["values"][63]
