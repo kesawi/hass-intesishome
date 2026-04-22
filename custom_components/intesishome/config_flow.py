@@ -173,11 +173,6 @@ class IntesisConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             step_id="details", data_schema=cloud_schema, errors=errors
         )
 
-    async def async_step_import(self, import_data) -> ConfigFlowResult:
-        """Handle configuration by yaml file."""
-        return await self.async_step_user(import_data)
-
-
 class CannotConnect(exceptions.HomeAssistantError):
     """Error to indicate we cannot connect."""
 
