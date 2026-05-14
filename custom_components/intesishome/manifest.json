@@ -7,6 +7,6 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/kesawi/hass-intesishome/issues",
   "loggers": ["pyintesishome"],
-  "requirements": ["pyintesishome @ git+https://github.com/kesawi/pyIntesisHome@dev"],
+  "requirements": ["pyintesishome@git+https://github.com/kesawi/pyIntesisHome@dev"],
   "version": "0.0.4"
 }
