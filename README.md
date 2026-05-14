@@ -7,16 +7,21 @@ Development fork of the IntesisHome integration for Home Assistant
 
 This custom integration is a fork of the core integration for IntesisHome. It retains cloud control support for IntesisHome, anywAir, and airconwithme devices, and adds fixes for local HTTP control of MH-AC-WIFI-1 devices.
 
+This integration depends on [kesawi/pyIntesisHome](https://github.com/kesawi/pyIntesisHome), a fork of [jnimmo/pyIntesisHome](https://github.com/jnimmo/pyIntesisHome) with fixes for MH-AC-WIFI-1 devices. PRs for those fixes have been submitted upstream.
+
 ## Fixes in this fork
 
-- **Vendored pyintesishome library** — uses relative imports to load the bundled library instead of any system-installed version, preventing conflicts with the built-in HA intesishome component
-- **AUTO fan mode for MH-AC-WIFI-1** — these devices support AUTO fan speed (UID 4 value 0) even though it is not advertised in the local datapoints descriptor; this fork injects AUTO into the fan mode list for MH-AC-WIFI-1 devices
+- **AUTO fan mode for MH-AC-WIFI-1** — these devices support AUTO fan speed (UID 4 value 0) even though it is not advertised in the local datapoints descriptor; the pyintesishome dependency injects AUTO into the fan mode list for MH-AC-WIFI-1 devices
 - **None guard in get_mode_list** — prevents a TypeError crash when cloud devices do not return UID 61 (config_mode_map)
 - **KeyError guard on config entry reload** — prevents a crash when reloading the integration via the UI
 - **HA 2026.x config flow compatibility** — replaces deprecated `FlowResult` import with `ConfigFlowResult` to fix "Invalid handler specified" error when adding the integration via the UI
 - **Remove deprecated async_step_import** — removes the deprecated YAML import handler that causes "Invalid handler specified" error when adding the integration via the UI in HA 2025+
 - **Replace deprecated async_forward_entry_unload** — replaces removed `async_forward_entry_unload` with `async_unload_platforms` for HA 2025+ compatibility
-- **Relative imports in vendored library** — fixes absolute imports within pyintesishome submodules that caused `No module named 'pyintesishome.intesisbase'` error on production
+
+## Fixes in kesawi/pyIntesisHome
+
+- **AUTO fan mode for MH-AC-WIFI-1** — injects AUTO fan speed into the fan map lookup for MH-AC-WIFI-1 devices (see above)
+- **Relative import in intesisbox.py** — fixes absolute import that breaks when pyintesishome is vendored inside another package
 
 ## Tested hardware
 
@@ -54,4 +59,4 @@ Note: DK-RC-WIFI-1B and FJ-AC-WIFI-1B are listed as supported by the upstream fo
 
 ## Acknowledgements
 
-This integration includes a vendored copy of [pyIntesisHome](https://github.com/jnimmo/pyIntesisHome) by James Nimmo, licensed under MIT. The library has been modified — see the git log for details.
+This integration depends on [pyIntesisHome](https://github.com/kesawi/pyIntesisHome) (fork of [jnimmo/pyIntesisHome](https://github.com/jnimmo/pyIntesisHome) by James Nimmo, licensed under MIT).

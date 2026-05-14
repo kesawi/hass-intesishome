@@ -6,7 +6,7 @@ import logging
 from random import randrange
 from typing import NamedTuple
 
-from .pyintesishome import (
+from pyintesishome import (
     IHAuthenticationError,
     IHConnectionError,
     IntesisBase,
@@ -14,7 +14,7 @@ from .pyintesishome import (
     IntesisHome,
     IntesisHomeLocal,
 )
-from .pyintesishome.const import (
+from pyintesishome.const import (
     DEVICE_AIRCONWITHME,
     DEVICE_ANYWAIR,
     DEVICE_INTESISBOX,
