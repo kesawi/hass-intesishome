@@ -171,7 +171,13 @@ class IntesisConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
     async def async_step_import(self, import_data) -> ConfigFlowResult:
-        """Handle configuration by yaml file."""
+        """Handle configuration by yaml file. Deprecated — use UI config flow instead."""
+        _LOGGER.warning(
+            "YAML configuration of IntesisHome is deprecated by Home Assistant "
+            "in favour of UI-based configuration. Please remove your YAML config "
+            "and set up via the UI instead. "
+            "YAML configuration support will be removed in a future release."
+        )
         return await self.async_step_user(import_data)
 
 
